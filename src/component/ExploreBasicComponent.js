@@ -1,51 +1,42 @@
-import { Delete, Instagram } from "@mui/icons-material";
-import {
-	Alert,
-	IconButton,
-	Rating,
-	TextField,
-	Typography,
-} from "@mui/material";
-import React, { useState } from "react";
+import { Button } from "@mui/material";
+import React from "react";
 
 const ExploreBasicComponent = () => {
-	const [rating, set_rating] = useState(2);
+	const isActive = false;
 	return (
-		<div>
-			<Typography
-				variant="h4"
-				component="h2"
+		<>
+			<Button
+				variant="contained"
+				sx={[
+					{
+						border: "1px solid red",
+						bgcolor: "steelblue",
+						p: 2,
+						mr: 2,
+
+						// width: {
+						// 	xs: 100, // theme.breakpoints.up('xs')
+						// 	sm: 200, // theme.breakpoints.up('sm')
+						// 	md: 300, // theme.breakpoints.up('md')
+						// 	lg: 400, // theme.breakpoints.up('lg')
+						// 	xl: 500, // theme.breakpoints.up('xl')
+						// },
+
+						// "&.MuiButton-root": {
+						// 	padding: "3rem",
+						// },
+
+						width: [100, 200, 300, 400, 500],
+					},
+					isActive && {
+						background: "yellow",
+					},
+				]}
 			>
-				This is basic component
-			</Typography>
-
-			<Instagram color="primary" />
-			<br />
-			<IconButton>
-				<Delete />
-			</IconButton>
-			<br />
-			<Rating
-				name="simple-controlled"
-				value={rating}
-				onChange={(event, newValue) => {
-					set_rating(newValue);
-				}}
-				sx={{
-					color: "steelblue",
-				}}
-			></Rating>
-			<br />
-
-			<Alert severity="error">This is an error alert — check it out!</Alert>
-			<br />
-
-			<TextField
-				label="User Name"
-				helperText="Invalid Name"
-				error={true}
-			/>
-		</div>
+				Submit
+			</Button>
+			<Button variant="contained">Cancel</Button>
+		</>
 	);
 };
 
