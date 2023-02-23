@@ -1,27 +1,47 @@
-import { useEffect, useState } from "react";
-// import Button from '@mui/material/Button';
-import "./App.css";
-import ExploreBasicComponent from "./component/ExploreBasicComponent";
+import {
+	createTheme,
+	CssBaseline,
+	Paper,
+	Switch,
+	ThemeProvider,
+} from "@mui/material";
+import { useState } from "react";
+import HeroCard from "./component/HeroCard";
 
 function App() {
-	const [submitting, set_submitting] = useState(false);
+	const [darkMode, set_darkMode] = useState(false);
 
-	useEffect(() => {
-		const id = setTimeout(() => {
-			set_submitting(false);
-		}, 1000);
-
-		return () => {
-			clearTimeout(id);
-		};
-	}, [submitting]);
-
+	const lightTheme = createTheme({
+		palette: {
+			mode: "light",
+			primary: {
+				main: "#ff0000",
+			},
+		},
+	});
+	const darkTheme = createTheme({
+		palette: {
+			mode: "dark",
+			primary: {
+				main: "#FFFF00",
+			},
+		},
+	});
 	return (
-		<div className="app">
-			<div>
-				<ExploreBasicComponent />
-			</div>
-		</div>
+		<ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+			<Switch onClick={() => set_darkMode(!darkMode)} />
+			<Paper
+				sx={{
+					height: "100vh",
+					width: "100vw",
+					display: "grid",
+					placeItems: "center",
+				}}
+			>
+				<CssBaseline />
+				<HeroCard />
+			</Paper>
+		</ThemeProvider>
 	);
 }
 
