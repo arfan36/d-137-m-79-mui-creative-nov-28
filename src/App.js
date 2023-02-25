@@ -1,46 +1,27 @@
-import {
-	createTheme,
-	CssBaseline,
-	Paper,
-	Switch,
-	ThemeProvider,
-} from "@mui/material";
-import { useState } from "react";
-import HeroCard from "./component/HeroCard";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./component/Layout/Layout";
+import Home from "./pages/Home/Home";
+import { theme } from "./theme/theme";
+
+const router = createBrowserRouter([
+	{
+		element: <Layout />,
+		path: "/",
+		children: [
+			{
+				element: <Home />,
+				path: "/",
+			},
+		],
+	},
+]);
 
 function App() {
-	const [darkMode, set_darkMode] = useState(false);
-
-	const lightTheme = createTheme({
-		palette: {
-			mode: "light",
-			primary: {
-				main: "#ff0000",
-			},
-		},
-	});
-	const darkTheme = createTheme({
-		palette: {
-			mode: "dark",
-			primary: {
-				main: "#FFFF00",
-			},
-		},
-	});
 	return (
-		<ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-			<Switch onClick={() => set_darkMode(!darkMode)} />
-			<Paper
-				sx={{
-					height: "100vh",
-					width: "100vw",
-					display: "grid",
-					placeItems: "center",
-				}}
-			>
-				<CssBaseline />
-				<HeroCard />
-			</Paper>
+		<ThemeProvider theme={theme}>
+			<RouterProvider router={router} />
+			<CssBaseline />
 		</ThemeProvider>
 	);
 }
