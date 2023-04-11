@@ -40,6 +40,14 @@ const Branding = () => {
 			<Box
 				sx={{
 					width: "50%",
+					// display: ["none", "none", "block"],
+					display: {
+						xs: "none",
+						sm: "none",
+						md: "block",
+						lg: "block",
+						xl: "block",
+					},
 				}}
 			>
 				<img
