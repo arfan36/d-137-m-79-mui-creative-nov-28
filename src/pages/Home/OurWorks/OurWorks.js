@@ -1,9 +1,10 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, Grid, IconButton } from "@mui/material";
 import React from "react";
 import SectionTitle from "../../../component/SectionTitle/SectionTitle";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CreativeCard from "../../../component/CreativeCard/CreativeCard";
 
 const OurWorks = () => {
 	const [value, setValue] = React.useState(0);
@@ -87,6 +88,11 @@ const OurWorks = () => {
 					</Box>
 				</Box>
 			</Box>
+
+			{/* card section */}
+			<Grid container></Grid>
+
+			<CreativeCard />
 		</Box>
 	);
 };
